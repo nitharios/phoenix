@@ -11,7 +11,7 @@ import (
 func New(HOST string) *echo.Echo {
 	e := echo.New()
 
-	fmt.Println("Hosting on ", HOST)
+	fmt.Println("Hosting on", HOST)
 
 	// Middleware
 	e.Use(middleware.Logger())

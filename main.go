@@ -8,16 +8,16 @@ import (
 func main() {
 	ENV := os.Getenv("ENV")
 	HOST := os.Getenv("HOST")
-	PORT := os.Getenv("PORT")
+	PORT := ":" + os.Getenv("PORT")
 
 	s := New(HOST)
 
 	if ENV != "PROD" {
-		fmt.Println("Starting test server on ", PORT)
+		fmt.Println("Starting test server on", PORT)
 		s.Logger.Fatal(s.Start(PORT))
 
 	} else {
-		fmt.Println("Starting production server on ", PORT)
+		fmt.Println("Starting production server on", PORT)
 		s.Logger.Fatal(s.Start(PORT))
 	}
 }
