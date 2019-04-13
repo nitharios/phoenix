@@ -1,14 +1,14 @@
 version: '3.6'
 
 services:
-  server:
+  goserver:
     build:
       context: .
       dockerfile: Dockerfile
     env_file:
       - .env
     image: nitharios/phoenix-server
-    container_name: server
+    container_name: goserver
     restart: unless-stopped
     networks:
       - app-network
@@ -28,7 +28,7 @@ services:
       - ./config:/etc/nginx/conf.d
       - ./logs/nginx:/var/log/nginx
     depends_on:
-      - server
+      - goserver
     networks:
       - app-network
 
