@@ -48,7 +48,7 @@ func Home(c echo.Context) error {
 	return c.String(http.StatusOK, message)
 }
 
-// Validate verifies that the verification token is authenticate for a webhook GET request
+// Validate verifies that the verification token is authenticate for a webhook POST request
 func Validate(c echo.Context) error {
 	token := os.Getenv("TOKEN")
 

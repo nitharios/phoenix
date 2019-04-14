@@ -9,6 +9,7 @@ import (
 // GenerateRoutes builds the available routes for the api
 func GenerateRoutes(e *echo.Echo) *echo.Echo {
 	e.GET("/", m.Home)
+	e.POST("/webhook", m.Validate)
 
 	return e
 }
