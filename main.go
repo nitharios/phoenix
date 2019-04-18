@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"os"
 
+	m "github.com/nitharios/phoenix/middleware"
+
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
@@ -14,12 +16,14 @@ func main() {
 	HOST := os.Getenv("HOST")
 	PORT := ":" + os.Getenv("PORT")
 
-	// Create echo client
+	// Create new client
 	e := echo.New()
+	rh := m.NewRequestHeaders()
 
-	// Set logging and recover functionality
+	// Middleware
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
+	e.Use(rh.Process)
 
 	// Routes
 	e = GenerateRoutes(e)
