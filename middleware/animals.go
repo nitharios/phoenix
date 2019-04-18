@@ -6,6 +6,19 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+type (
+	animal struct {
+		Name        string  `json:"name"`
+		Type        string  `json:"type"`
+		Size        string  `json:"size"`
+		Breed       string  `json:"breed"`
+		Age         string  `json:"age"`
+		Picture     string  `json:"pictureURL"`
+		Description string  `json:"description"`
+		Shelter     shelter `json:"shelter"`
+	}
+)
+
 // GetAnimals provides a list of animals
 func GetAnimals(c echo.Context) error {
 	sID := c.Param("sid")
@@ -14,17 +27,17 @@ func GetAnimals(c echo.Context) error {
 	return c.HTML(http.StatusOK, body)
 }
 
-// GetAnimal provides details of an animal
-func GetAnimal(c echo.Context) error {
-	anID := c.Param("anid")
-	body := `Animal ` + anID
+// AddAnimal creates a new animal for the shelter list
+func AddAnimal(c echo.Context) error {
+	body := `Animal created`
 
 	return c.HTML(http.StatusOK, body)
 }
 
-// AddAnimal creates a new animal for the shelter list
-func AddAnimal(c echo.Context) error {
-	body := `Animal created`
+// GetAnimal provides details of an animal
+func GetAnimal(c echo.Context) error {
+	anID := c.Param("anid")
+	body := `Animal ` + anID
 
 	return c.HTML(http.StatusOK, body)
 }

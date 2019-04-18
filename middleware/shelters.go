@@ -6,9 +6,34 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+type (
+	shelter struct {
+		Name        string   `json:"shelterName"`
+		Website     string   `json:"website"`
+		Email       string   `json:"email"`
+		PhoneNumber string   `json:"phoneNumber"`
+		Location    location `json:"location"`
+	}
+
+	// Location format
+	location struct {
+		Street  string `json:"street"`
+		City    string `json:"city"`
+		State   string `json:"state"`
+		ZipCode string `json:"zipCode"`
+	}
+)
+
 // GetShelters provides a list of animal shelters
 func GetShelters(c echo.Context) error {
 	body := `Shelters returned`
+
+	return c.HTML(http.StatusOK, body)
+}
+
+// AddShelter creates a new animal shelter for the list
+func AddShelter(c echo.Context) error {
+	body := `Shelter created`
 
 	return c.HTML(http.StatusOK, body)
 }
@@ -17,13 +42,6 @@ func GetShelters(c echo.Context) error {
 func GetShelter(c echo.Context) error {
 	sID := c.Param("sid")
 	body := `Shelter ` + sID
-
-	return c.HTML(http.StatusOK, body)
-}
-
-// AddShelter creates a new animal shelter for the list
-func AddShelter(c echo.Context) error {
-	body := `Shelter created`
 
 	return c.HTML(http.StatusOK, body)
 }
