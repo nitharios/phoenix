@@ -8,12 +8,13 @@ import (
 
 type (
 	animal struct {
+		ID          string  `json:"animal_id"`
 		Name        string  `json:"name"`
 		Type        string  `json:"type"`
 		Size        string  `json:"size"`
 		Breed       string  `json:"breed"`
 		Age         string  `json:"age"`
-		Picture     string  `json:"pictureURL"`
+		PictureURL  string  `json:"picture_url"`
 		Description string  `json:"description"`
 		Shelter     shelter `json:"shelter"`
 	}
@@ -29,9 +30,12 @@ func GetAnimals(c echo.Context) error {
 
 // AddAnimal creates a new animal for the shelter list
 func AddAnimal(c echo.Context) error {
-	body := `Animal created`
+	a := &animal{}
+	if err := c.Bind(a); err != nil {
+		return err
+	}
 
-	return c.HTML(http.StatusOK, body)
+	return c.JSON(http.StatusOK, a)
 }
 
 // GetAnimal provides details of an animal
@@ -44,10 +48,12 @@ func GetAnimal(c echo.Context) error {
 
 // UpdateAnimal updates a current animal on the shelter list
 func UpdateAnimal(c echo.Context) error {
-	anID := c.Param("anid")
-	body := `Animal ` + anID + ` updated`
+	a := &animal{}
+	if err := c.Bind(a); err != nil {
+		return err
+	}
 
-	return c.HTML(http.StatusOK, body)
+	return c.JSON(http.StatusOK, a)
 }
 
 // RemoveAnimal removes an animal from the shelter list

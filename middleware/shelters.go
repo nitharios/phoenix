@@ -8,10 +8,11 @@ import (
 
 type (
 	shelter struct {
-		Name        string   `json:"shelterName"`
+		ID          string   `json:"shelter_id"`
+		Name        string   `json:"name"`
 		Website     string   `json:"website"`
 		Email       string   `json:"email"`
-		PhoneNumber string   `json:"phoneNumber"`
+		PhoneNumber string   `json:"phone_number"`
 		Location    location `json:"location"`
 	}
 
@@ -20,7 +21,7 @@ type (
 		Street  string `json:"street"`
 		City    string `json:"city"`
 		State   string `json:"state"`
-		ZipCode string `json:"zipCode"`
+		ZipCode string `json:"zip_code"`
 	}
 )
 
@@ -33,9 +34,12 @@ func GetShelters(c echo.Context) error {
 
 // AddShelter creates a new animal shelter for the list
 func AddShelter(c echo.Context) error {
-	body := `Shelter created`
+	s := &shelter{}
+	if err := c.Bind(s); err != nil {
+		return err
+	}
 
-	return c.HTML(http.StatusOK, body)
+	return c.JSON(http.StatusOK, s)
 }
 
 // GetShelter provides details of an animal shelter
@@ -48,10 +52,12 @@ func GetShelter(c echo.Context) error {
 
 // UpdateShelter updates a current animal shelter on the list
 func UpdateShelter(c echo.Context) error {
-	sID := c.Param("sid")
-	body := `Shelter ` + sID + ` updated`
+	s := &shelter{}
+	if err := c.Bind(s); err != nil {
+		return err
+	}
 
-	return c.HTML(http.StatusOK, body)
+	return c.JSON(http.StatusOK, s)
 }
 
 // RemoveShelter removes an animal shelter from the list
