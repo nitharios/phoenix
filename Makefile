@@ -24,5 +24,8 @@ build:
 build-amd64:
 	env CGO_ENABLED=0 GOOS=$(OS) GOARCH=$(GOARCH) $(GOBUILD) -a -o $(BIN_PATH)/$(BINARY) -v .
 
+rebuild-server:
+	docker-compose up --force-recreate --no-deps -d goserver
+
 env:
 	cp ./.env.sample .env
