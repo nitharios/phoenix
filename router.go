@@ -7,21 +7,21 @@ import (
 )
 
 // GenerateRoutes builds the available routes for the api
-func GenerateRoutes(e *echo.Echo) *echo.Echo {
+func GenerateRoutes(g *echo.Group) *echo.Group {
 	// Shelters routes
-	e.GET("/shelters", m.GetShelters)
-	e.POST("/shelters", m.AddShelter)
-	e.GET("/shelters/:sid", m.GetShelter)
-	e.PATCH("/shelters/:sid", m.UpdateShelter)
-	e.DELETE("/shelters/:sid", m.RemoveShelter)
-	sURI := e.URI(m.GetShelter)
+	g.GET("/shelters", m.GetShelters)
+	g.POST("/shelters", m.AddShelter)
+	g.GET("/shelters/:sid", m.GetShelter)
+	g.PATCH("/shelters/:sid", m.UpdateShelter)
+	g.DELETE("/shelters/:sid", m.RemoveShelter)
+	sURI := "/shelters/:sid"
 
 	// Animals routes
-	e.GET(sURI+"/animals", m.GetAnimals)
-	e.POST(sURI+"/animals", m.AddAnimal)
-	e.GET(sURI+"/animals/:anid", m.GetAnimal)
-	e.PATCH(sURI+"/animals/:anid", m.UpdateAnimal)
-	e.DELETE(sURI+"/animals/:anid", m.RemoveAnimal)
+	g.GET(sURI+"/animals", m.GetAnimals)
+	g.POST(sURI+"/animals", m.AddAnimal)
+	g.GET(sURI+"/animals/:anid", m.GetAnimal)
+	g.PATCH(sURI+"/animals/:anid", m.UpdateAnimal)
+	g.DELETE(sURI+"/animals/:anid", m.RemoveAnimal)
 
-	return e
+	return g
 }
