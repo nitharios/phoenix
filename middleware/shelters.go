@@ -8,12 +8,13 @@ import (
 
 type (
 	shelter struct {
-		ID          string   `json:"shelter_id"`
-		Name        string   `json:"name"`
-		Website     string   `json:"website"`
-		Email       string   `json:"email"`
-		PhoneNumber string   `json:"phone_number"`
-		Location    location `json:"location"`
+		ID            string   `json:"shelter_id"`
+		Name          string   `json:"name"`
+		AdoptionsPage string   `json:"adoptions_page"`
+		Homepage      string   `json:"homepage"`
+		Email         string   `json:"email"`
+		PhoneNumber   string   `json:"phone_number"`
+		Location      location `json:"location"`
 	}
 
 	// Location format

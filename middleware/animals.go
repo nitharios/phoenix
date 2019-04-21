@@ -10,12 +10,14 @@ type (
 	animal struct {
 		ID          string  `json:"animal_id"`
 		Name        string  `json:"name"`
+		URL         string  `json:"url"`
+		PictureURL  string  `json:"picture_url"`
 		Type        string  `json:"type"`
 		Size        string  `json:"size"`
 		Breed       string  `json:"breed"`
 		Age         string  `json:"age"`
-		PictureURL  string  `json:"picture_url"`
 		Description string  `json:"description"`
+		Adopted     bool    `json:"adopted"`
 		Shelter     shelter `json:"shelter"`
 	}
 )
