@@ -13,8 +13,8 @@ type (
 		URL         string  `json:"url"`
 		PictureURL  string  `json:"picture_url"`
 		Type        string  `json:"type"`
-		Size        string  `json:"size"`
 		Breed       string  `json:"breed"`
+		Size        string  `json:"size"`
 		Age         string  `json:"age"`
 		Description string  `json:"description"`
 		Adopted     bool    `json:"adopted"`

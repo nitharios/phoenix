@@ -10,11 +10,13 @@ type (
 	shelter struct {
 		ID            string   `json:"shelter_id"`
 		Name          string   `json:"name"`
-		AdoptionsPage string   `json:"adoptions_page"`
 		Homepage      string   `json:"homepage"`
+		AdoptionsPage string   `json:"adoptions_page"`
+		DonationsPage string   `json:"donations_page"`
 		Email         string   `json:"email"`
 		PhoneNumber   string   `json:"phone_number"`
 		Location      location `json:"location"`
+		TotalAnimals  int      `json:"total_animals"`
 	}
 
 	// Location format
